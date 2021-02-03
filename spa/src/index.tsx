@@ -8,6 +8,8 @@ import Application from "./view/Application";
 import Counter from "./view/Counter";
 import Error404 from "./view/Error404";
 import "./index.css";
+import TranslationList from "./view/TranslationList";
+import TranslationDetails from "./view/TranslationDetails";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -15,6 +17,8 @@ ReactDOM.render(
       <Router>
         <Switch>
           <Route exact path="/" component={Application} />
+          <Route exact path="/translation" component={TranslationList} />
+          <Route exact path="/translation/:id" component={TranslationDetails} />
           <Route exact path="/counter" component={Counter} />
           <Route component={Error404} />
         </Switch>
