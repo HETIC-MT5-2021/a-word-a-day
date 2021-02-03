@@ -10,6 +10,7 @@ import Error404 from "./view/Error404";
 import "./index.css";
 import TranslationList from "./view/TranslationList";
 import TranslationDetails from "./view/TranslationDetails";
+import TranslationAdd from "./view/TranslationAdd";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -18,6 +19,7 @@ ReactDOM.render(
         <Switch>
           <Route exact path="/" component={Application} />
           <Route exact path="/translation" component={TranslationList} />
+          <Route exact path="/translation/add" component={TranslationAdd} />
           <Route exact path="/translation/:id" component={TranslationDetails} />
           <Route exact path="/counter" component={Counter} />
           <Route component={Error404} />
