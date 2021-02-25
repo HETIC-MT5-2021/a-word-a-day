@@ -11,6 +11,12 @@ import "./index.css";
 import TranslationList from "./view/TranslationList";
 import TranslationDetails from "./view/TranslationDetails";
 import TranslationAdd from "./view/TranslationAdd";
+import { LocalStorageDriver } from "./utils/LocalStorageDriver";
+import Translation from "./domain/Translation";
+
+export const translationsStorage = new LocalStorageDriver<Translation[]>(
+  "translations"
+);
 
 ReactDOM.render(
   <React.StrictMode>
