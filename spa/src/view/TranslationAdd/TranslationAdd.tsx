@@ -4,6 +4,7 @@ import dayjs from "dayjs";
 import { v4 as uuid } from "uuid";
 import { fetchTranslations } from "../../data";
 import { translationsStorage } from "../..";
+import { Layout } from "../Layout/Layout";
 
 export interface Props {}
 
@@ -55,57 +56,61 @@ export const TranslationAdd: React.FunctionComponent<Props> = () => {
   };
 
   return (
-    <div>
-      <div className="field">
-        <label className="label">Anglais *</label>
-        <div className="control">
-          <input
-            className="input"
-            type="text"
-            placeholder="En"
-            value={en}
-            onChange={handleChangeEn}
-          />
+    <Layout>
+      <div>
+        <div className="field">
+          <label className="label">Anglais *</label>
+          <div className="control">
+            <input
+              className="input"
+              type="text"
+              placeholder="En"
+              value={en}
+              onChange={handleChangeEn}
+            />
+          </div>
         </div>
-      </div>
 
-      <div className="field">
-        <label className="label">Français *</label>
-        <div className="control">
-          <input
-            className="input"
-            type="text"
-            placeholder="Fr"
-            value={fr}
-            onChange={handleChangeFr}
-          />
+        <div className="field">
+          <label className="label">Français *</label>
+          <div className="control">
+            <input
+              className="input"
+              type="text"
+              placeholder="Fr"
+              value={fr}
+              onChange={handleChangeFr}
+            />
+          </div>
+          {frError && (
+            <p className="help is-danger">Ce champ doit être rempli</p>
+          )}
         </div>
-        {frError && <p className="help is-danger">Ce champ doit être rempli</p>}
-      </div>
 
-      <div className="field">
-        <label className="label">Note</label>
-        <div className="control">
-          <textarea
-            className="textarea"
-            placeholder="Note"
-            value={note}
-            onChange={handleChangeNote}
-          />
+        <div className="field">
+          <label className="label">Note</label>
+          <div className="control">
+            <textarea
+              className="textarea"
+              placeholder="Note"
+              value={note}
+              onChange={handleChangeNote}
+            />
+          </div>
         </div>
-      </div>
 
-      <div className="field is-grouped">
-        <div className="control">
-          <button
-            className="button is-link"
-            disabled={!en || !fr}
-            onClick={submit}
-          >
-            Add
-          </button>
+        <div className="field is-grouped">
+          <div className="control">
+            <button
+              className="button is-link"
+              disabled={!en || !fr}
+              onClick={submit}
+            >
+              Add
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    </Layout>
   );
 };

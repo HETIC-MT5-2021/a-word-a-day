@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { fetchTranslations } from "../../data";
+import { Layout } from "../Layout/Layout";
 
 interface Props {}
 
@@ -12,11 +13,13 @@ export const TranslationDetails: React.FunctionComponent<Props> = () => {
   )!;
 
   return (
-    <div>
-      <div>{en}</div>
-      <div>{fr}</div>
-      <div>{note}</div>
-      <div>{creation_date.format("DD/MM/YYYY")}</div>
-    </div>
+    <Layout>
+      <div>
+        <div>{en}</div>
+        <div>{fr}</div>
+        <div>{note}</div>
+        <div>{creation_date.format("DD/MM/YYYY")}</div>
+      </div>
+    </Layout>
   );
 };

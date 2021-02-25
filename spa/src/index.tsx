@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./storage/store";
 import * as serviceWorker from "./serviceWorker";
@@ -12,6 +12,7 @@ import TranslationList from "./view/TranslationList";
 import TranslationDetails from "./view/TranslationDetails";
 import TranslationAdd from "./view/TranslationAdd";
 import { TranslationStorageDriver } from "./utils/TranslationStorageDriver";
+import { Layout } from "./view/Layout/Layout";
 
 export const translationsStorage = new TranslationStorageDriver();
 
@@ -19,8 +20,6 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <Router>
-        <Link to="/translations">Liste</Link>
-        <Link to="/translation/add">Ajouter</Link>
         <Switch>
           <Route exact path="/" component={Application} />
           <Route exact path="/translations" component={TranslationList} />
