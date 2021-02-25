@@ -1,18 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import TranslationItem from "./TranslationItem";
-import {translations} from "../../date";
+import { fetchTranslations } from "../../data";
+import Translation from "../../domain/Translation";
 
-export interface Props {
-}
+export interface Props {}
 
-export const TranslationList: React.FunctionComponent<Props> = () => (
+export const TranslationList: React.FunctionComponent<Props> = () => {
+  const [translations, setTranslations] = useState<Translation[]>([]);
+
+  useEffect(() => {
+    const translations = fetchTranslations();
+
+    setTranslations(translations);
+  }, []);
+
+  return (
     <ul>
-        {
-            translations.map((translation) => (
-                <li key={translation.id} className="box">
-                    <TranslationItem translation={translation}/>
-                </li>
-            ))
-        }
+      {translations.map((translation) => (
+        <li key={translation.id} className="box">
+          <TranslationItem translation={translation} />
+        </li>
+      ))}
     </ul>
-);
+  );
+};

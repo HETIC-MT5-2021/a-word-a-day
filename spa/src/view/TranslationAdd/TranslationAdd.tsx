@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import Translation from "../../domain/Translation";
 import dayjs from "dayjs";
+import { v4 as uuid } from "uuid";
 
 export interface Props {
 }
@@ -39,9 +40,13 @@ export const TranslationAdd: React.FunctionComponent<Props> = () => {
             fr,
             en,
             creation_date: dayjs(),
-            id: '1'
+            id: uuid()
         }
-        console.log(data);
+        
+        const translations = JSON.parse(localStorage.getItem('translations') || "[]")
+        const updatedTranslations = [...translations, data]
+
+        localStorage.setItem('translations', JSON.stringify(updatedTranslations))
     }
 
     return (
